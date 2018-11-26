@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class PerspectiveImage extends Observable{
+public class Perspective extends Observable{
 	private String iconPath;
 	private double zoomLevel;
 	private Point position;

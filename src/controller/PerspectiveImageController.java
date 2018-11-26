@@ -1,4 +1,11 @@
 package controller;
 
-public class PerspectiveImageController {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class PerspectiveImageController implements ActionListener{
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+	}
 }
