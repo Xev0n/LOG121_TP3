@@ -7,12 +7,6 @@ import model.Perspective;
 public class Paste implements IActionOnImage {
 
 	private static Perspective perspective;
-	
-	@Override
-	public void IActionOnImage(Perspective p) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public void execute(Image i) {
