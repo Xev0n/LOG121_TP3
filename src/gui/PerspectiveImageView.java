@@ -1,13 +1,13 @@
 package gui;
 
 import model.Perspective;
+import observer.IObserver;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Observable;
-import java.util.Observer;
 
-public class PerspectiveImageView extends JFrame implements Observer {
+public class PerspectiveImageView extends JFrame implements IObserver {
 	
 	private PanelImage panelImg;
 	private PanelCommands pc;
@@ -18,13 +18,13 @@ public class PerspectiveImageView extends JFrame implements Observer {
 	private static final Dimension DIMENSION = new Dimension(500, 500);
 
 	@Override
-	public void update(Observable o, Object arg) {
-
-		
+	public void update() {
+		repaint();
 	}
 
 	public PerspectiveImageView (Perspective model){
 		this.model=model;
+		model.addObserver(this);
 		initFrame();
 	}
 
