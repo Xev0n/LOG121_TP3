@@ -11,24 +11,15 @@ public class CommandPaste extends AbstractCommand implements ICommandOnImage {
 		// TODO Auto-generated constructor stub
 	}
 
-
-
-	private static Perspective perspective;
-
-
-
 	@Override
 	public void undo() {
 		// TODO Auto-generated method stub
 
 	}
 
-
-
 	@Override
-	public boolean execute() {
+	public void execute() {
 		// TODO Auto-generated method stub
-		return false;
 	}
 
 }

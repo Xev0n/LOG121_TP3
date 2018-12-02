@@ -13,6 +13,7 @@ import actions.ActionTranslateUp;
 import java.awt.*;
 
 public class PanelTranslation extends JPanel {
+	
 	private JButton btnUp;
 	private JButton btnDown;
 	private JButton btnLeft;

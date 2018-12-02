@@ -3,6 +3,7 @@ package commandes;
 import java.awt.Image;
 
 import model.Perspective;
+import model.Perspective.enuTranslationDirection;
 
 public class CommandTranslateRight extends AbstractCommand implements ICommandOnImage {
 	
@@ -11,19 +12,15 @@ public class CommandTranslateRight extends AbstractCommand implements ICommandOn
 		// TODO Auto-generated constructor stub
 	}
 
-
 	@Override
 	public void undo() {
-		// TODO Auto-generated method stub
+		perspective.translate(-TRANSLATION_INCREMENT, enuTranslationDirection.HORIZONTAL);
 
 	}
 
-
 	@Override
-	public boolean execute() {
-		if(perspective.translateRight(TRANSLATION_INCREMENT))
-			return true;
-		return false;
+	public void execute() {
+		perspective.translate(TRANSLATION_INCREMENT, enuTranslationDirection.HORIZONTAL);
 	}
 
 }

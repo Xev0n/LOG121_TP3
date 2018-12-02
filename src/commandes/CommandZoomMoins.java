@@ -10,21 +10,14 @@ public class CommandZoomMoins extends AbstractCommand implements ICommandOnImage
 		super(perspective);
 		// TODO Auto-generated constructor stub
 	}
-
-
-	private static double ZOOM_INCREMENT = 20;
 	
-
 	@Override
 	public void undo() {
-		// TODO Auto-generated method stub
+		perspective.updateZoom(ZOOM_INCREMENT);
 	}
 
-
 	@Override
-	public boolean execute() {
-		if(perspective.deZoomer(ZOOM_INCREMENT))
-			return true;
-		return false;
+	public void execute() {
+		perspective.updateZoom(-ZOOM_INCREMENT);
 	}
 }

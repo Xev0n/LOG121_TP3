@@ -1,5 +1,6 @@
 package gui;
 
+import model.ImageCustom;
 import model.Perspective;
 import observer.IObserver;
 
@@ -11,7 +12,7 @@ public class PerspectiveImageView extends JFrame implements IObserver {
 	
 	private PanelImage panelImg;
 	private PanelCommands pc;
-	private Perspective model;
+	private ImageCustom model;
 	private MenuPanel mp;
 	private static final long serialVersionUID = 1L;
 	private static final String TITRE_FENETRE = "Devoir 2 - Log121";
@@ -19,18 +20,19 @@ public class PerspectiveImageView extends JFrame implements IObserver {
 
 	@Override
 	public void update() {
+		System.out.println("Update");
 		repaint();
 	}
 
-	public PerspectiveImageView (Perspective model){
-		this.model=model;
+	public PerspectiveImageView (ImageCustom model){
+		this.model = model;
 		model.addObserver(this);
 		initFrame();
 	}
 
 	private void initFrame(){
-		panelImg=new PanelImage(model);
-		mp=new MenuPanel(model);
+		panelImg = new PanelImage(model);
+		mp = new MenuPanel(model);
 		pc = new PanelCommands(model);
 		this.setJMenuBar(mp);
 		setLayout(new BoxLayout(this.getContentPane(),BoxLayout.Y_AXIS));
@@ -38,11 +40,6 @@ public class PerspectiveImageView extends JFrame implements IObserver {
 		this.add(panelImg);
 		pc.setPreferredSize(new Dimension(490,100));
 		this.add(pc);
-
-
-
-
-
 
 		// Faire en sorte que le X de la fen�tre ferme la fen�tre
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -55,8 +52,5 @@ public class PerspectiveImageView extends JFrame implements IObserver {
 		// Emp�cher la redimension de la fen�tre
 		setResizable(false);
 		pack();
-
-
-
 	}
 }

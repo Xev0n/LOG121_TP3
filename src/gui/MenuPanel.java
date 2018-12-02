@@ -1,15 +1,20 @@
 package gui;
 
+import model.ImageCustom;
 import model.Perspective;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
+
+import java.awt.Image;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
 public class MenuPanel extends JMenuBar {
-
 
 		private static final long serialVersionUID = 1L;
 		private static final String MENU_FICHIER_TITRE = "Fichier";
@@ -18,12 +23,9 @@ public class MenuPanel extends JMenuBar {
 		private static final String MENU_AIDE_TITRE = "Aide";
 		private static final String MENU_AIDE_PROPOS = "A propos de...";
 		private static final String MENU_PERSPECTIVES = "Perspective";
-		private Perspective model;
+		private ImageCustom model;
 
-
-
-
-		public MenuPanel(Perspective model) {
+		public MenuPanel(ImageCustom model) {
 			this.model=model;
 			ajouterMenuFichier();
 			ajouterMenuPerspectives();
@@ -52,9 +54,14 @@ public class MenuPanel extends JMenuBar {
 				if (returnValue == JFileChooser.APPROVE_OPTION) {
 
 					File selectedFile = fileChooser.getSelectedFile();
-					model.setIconPath(selectedFile.getAbsolutePath());
-
-					System.out.println("Image choisie : "+selectedFile.getAbsolutePath());
+					BufferedImage bfImg;
+					try {
+						bfImg = ImageIO.read(selectedFile);
+						model.setImage(bfImg);
+						System.out.println("Image choisie : "+selectedFile.getAbsolutePath());
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 				}
 			});
 
@@ -68,8 +75,6 @@ public class MenuPanel extends JMenuBar {
 			add(menuFichier);
 
 		}
-
-
 
 		/**
 		 * Cr�er le menu Aide
@@ -95,22 +100,14 @@ public class MenuPanel extends JMenuBar {
 	 */
 	private void ajouterMenuPerspectives() {
 		JMenu menuAide = new JMenu(MENU_PERSPECTIVES);
-
-		for(String s : model.getPerspectivesNames()){
-			JMenuItem menuP = new JMenuItem(s);
-			menuAide.add(menuP);
-
-			menuP.addActionListener((ActionEvent e) -> {
+		for(int i=0; i < model.getNbPerspectives(); i++) {
+			JMenuItem menuItem = new JMenuItem("Perspective " + i+1);
+			menuAide.add(menuItem);
+			menuAide.addActionListener((ActionEvent e) -> {
 				//TODO: Changer les images
 			});
-
 		}
 
 		add(menuAide);
 	}
-
-
-
-
-
 }

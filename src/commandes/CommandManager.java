@@ -6,20 +6,21 @@ import java.util.Stack;
 import model.Perspective;
 
 public class CommandManager {
+	
 	private Stack<ICommandOnImage> actions;
 	private LinkedList<Perspective> perspectives;
 	private static CommandManager manager;
 	
 	private CommandManager() {
-		actions = new Stack();
+		actions = new Stack<>();
 	}
 	
 	public void undo(){
-		
+		// depile et call le undo de l'élement
 	}
 	
 	public void reset(){
-		
+		actions.clear();
 	}
 	
 	public static CommandManager getInstance(){
@@ -29,8 +30,7 @@ public class CommandManager {
 	}
 
 	public void doCommand(ICommandOnImage command) {
-    	if (command.execute()) {
-    		actions.add(command);
-    	} 		
+    	command.execute();
+    	actions.push(command);
 	}
 }
