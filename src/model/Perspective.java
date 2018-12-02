@@ -29,15 +29,9 @@ public class Perspective extends AbstractObservable {
 		addObserver(imageCustom);
 	}
 	
-	public void translate(int value, enuTranslationDirection direction){
-		switch (direction) {
-		case HORIZONTAL:
-			translation.x += value;
-			break;
-		case VERTICAL:
-			translation.y += value;
-			break;
-		}
+	public void translate(int dx, int dy){
+		translation.x += dx;
+		translation.y += dy;
 		notifyObservers();
 	}
 	

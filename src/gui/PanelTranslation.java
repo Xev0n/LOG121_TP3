@@ -1,16 +1,14 @@
 package gui;
 
-import controller.PerspectiveImageController;
 import model.Perspective;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
-import actions.ActionTranslateDown;
-import actions.ActionTranslateLeft;
-import actions.ActionTranslateRight;
-import actions.ActionTranslateUp;
+import java.awt.BorderLayout;
+import java.awt.Point;
 
-import java.awt.*;
+import actions.ActionTranslate;
 
 public class PanelTranslation extends JPanel {
 	
@@ -21,16 +19,10 @@ public class PanelTranslation extends JPanel {
 	private Perspective model;
 
 	public PanelTranslation (Perspective model){
-		btnUp=new JButton(new ActionTranslateUp(model,"Up"));
-		btnDown= new JButton(new ActionTranslateDown(model,"Down"));
-		btnLeft=new JButton(new ActionTranslateLeft(model,"Left"));
-		btnRight=new JButton(new ActionTranslateRight(model,"Right"));
-
-//		btnUp.addActionListener(new PerspectiveImageController());
-//		btnDown.addActionListener(new PerspectiveImageController());
-//		btnLeft.addActionListener(new PerspectiveImageController());
-//		btnRight.addActionListener(new PerspectiveImageController());
-
+		btnUp = new JButton(new ActionTranslate(model,"Up",new Point(0,-10)));
+		btnDown = new JButton(new ActionTranslate(model,"Down", new Point(0,10)));
+		btnLeft = new JButton(new ActionTranslate(model,"Left", new Point(-10,0)));
+		btnRight = new JButton(new ActionTranslate(model,"Right",new Point(10,0)));
 
 		this.setLayout(new BorderLayout());
 		this.add(btnUp, BorderLayout.NORTH);
