@@ -10,16 +10,16 @@ import java.util.Observer;
 public class PerspectiveImageView extends JFrame implements Observer {
 	
 	private PanelImage panelImg;
-	private PanelCommands panelCommands;
+	private PanelCommands pc;
 	private Perspective model;
-
+	private MenuPanel mp;
 	private static final long serialVersionUID = 1L;
 	private static final String TITRE_FENETRE = "Devoir 2 - Log121";
 	private static final Dimension DIMENSION = new Dimension(500, 500);
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
+
 		
 	}
 
@@ -29,14 +29,19 @@ public class PerspectiveImageView extends JFrame implements Observer {
 	}
 
 	private void initFrame(){
-		panelImg=new PanelImage();
-		PanelCommands pc = new PanelCommands();
-		PanelZoom pz=new PanelZoom();
-		PanelTranslation pt= new PanelTranslation();
+		panelImg=new PanelImage(model);
+		mp=new MenuPanel(model);
+		pc = new PanelCommands(model);
+		this.setJMenuBar(mp);
+		setLayout(new BoxLayout(this.getContentPane(),BoxLayout.Y_AXIS));
+		panelImg.setPreferredSize(new Dimension(490,400));
 		this.add(panelImg);
+		pc.setPreferredSize(new Dimension(490,100));
 		this.add(pc);
-		this.add(pz);
-		this.add(pt);
+
+
+
+
 
 
 		// Faire en sorte que le X de la fen�tre ferme la fen�tre
@@ -49,6 +54,8 @@ public class PerspectiveImageView extends JFrame implements Observer {
 		setLocationRelativeTo(null);
 		// Emp�cher la redimension de la fen�tre
 		setResizable(false);
+		pack();
+
 
 
 	}
