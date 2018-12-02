@@ -4,6 +4,12 @@ import controller.PerspectiveImageController;
 import model.Perspective;
 
 import javax.swing.*;
+
+import actions.ActionTranslateDown;
+import actions.ActionTranslateLeft;
+import actions.ActionTranslateRight;
+import actions.ActionTranslateUp;
+
 import java.awt.*;
 
 public class PanelTranslation extends JPanel {
@@ -14,15 +20,15 @@ public class PanelTranslation extends JPanel {
 	private Perspective model;
 
 	public PanelTranslation (Perspective model){
-		btnUp=new JButton("Up");
-		btnDown= new JButton("Down");
-		btnLeft=new JButton("Left");
-		btnRight=new JButton("Right");
+		btnUp=new JButton(new ActionTranslateUp(model,"Up"));
+		btnDown= new JButton(new ActionTranslateDown(model,"Down"));
+		btnLeft=new JButton(new ActionTranslateLeft(model,"Left"));
+		btnRight=new JButton(new ActionTranslateRight(model,"Right"));
 
-		btnUp.addActionListener(new PerspectiveImageController());
-		btnDown.addActionListener(new PerspectiveImageController());
-		btnLeft.addActionListener(new PerspectiveImageController());
-		btnRight.addActionListener(new PerspectiveImageController());
+//		btnUp.addActionListener(new PerspectiveImageController());
+//		btnDown.addActionListener(new PerspectiveImageController());
+//		btnLeft.addActionListener(new PerspectiveImageController());
+//		btnRight.addActionListener(new PerspectiveImageController());
 
 
 		this.setLayout(new BorderLayout());

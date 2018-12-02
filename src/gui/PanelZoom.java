@@ -4,6 +4,10 @@ import controller.PerspectiveImageController;
 import model.Perspective;
 
 import javax.swing.*;
+
+import actions.ActionZoomMoins;
+import actions.ActionZoomPlus;
+
 import java.awt.*;
 
 public class PanelZoom extends JPanel {
@@ -13,11 +17,12 @@ public class PanelZoom extends JPanel {
 
 
 	public PanelZoom(Perspective model){
-		btnZoomUp=new JButton("Zoom +");
-		btnZoomDown=new JButton("Zoom -");
+		btnZoomUp=new JButton(new ActionZoomPlus(model,"Zoom +"));
+		btnZoomDown=new JButton(new ActionZoomMoins(model, "Zoom -"));
 
-		btnZoomUp.addActionListener(new PerspectiveImageController());
-		btnZoomDown.addActionListener(new PerspectiveImageController());
+//		btnZoomUp.addActionListener(new PerspectiveImageController());
+//		btnZoomDown.addActionListener(new PerspectiveImageController());
+		
 		this.setLayout(new GridLayout(1,3));
 		this.add(btnZoomUp);
 		this.add(btnZoomDown);
