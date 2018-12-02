@@ -1,11 +1,12 @@
-package controller;
+package command;
 
 import java.awt.Image;
 
 import model.Perspective;
 
-public class ChangePerspective implements IActionOnImage {
-
+public class Translate implements IActionOnImage {
+	
+	private static int TRANSLATION_INCREMENT = 10;
 	private static Perspective perspective;
 
 	@Override
