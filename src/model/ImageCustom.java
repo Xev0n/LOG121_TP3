@@ -21,13 +21,6 @@ public class ImageCustom extends AbstractObservable implements Serializable, IOb
 			tabPerspectives[i] = new Perspective(this);
 		}
 	}
-
-	public ImageCustom(Perspective[] tabPerspectives, BufferedImage imageDeBase, int indexCurrentPerspective){
-		this.tabPerspectives=tabPerspectives;
-		this.imageDeBase=imageDeBase;
-		this.indexCurrentPerspective=indexCurrentPerspective;
-
-	}
 	
 	public BufferedImage getImage() {
 		return imageDeBase;
