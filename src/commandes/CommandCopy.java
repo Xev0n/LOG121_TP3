@@ -2,13 +2,13 @@ package commandes;
 
 import java.awt.Image;
 
+import model.ImageCustom;
 import model.Perspective;
 
 public class CommandCopy extends AbstractCommand implements ICommandOnImage {
 
-	public CommandCopy(Perspective perspective) {
-		super(perspective);
-		// TODO Auto-generated constructor stub
+	public CommandCopy(ImageCustom imgCustom) {
+		super(imgCustom);
 	}
 
 	@Override

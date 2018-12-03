@@ -1,11 +1,15 @@
 package gui;
 
 import model.ImageCustom;
-import model.Perspective;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
+
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class PanelCommands extends JPanel {
 	
@@ -18,8 +22,8 @@ public class PanelCommands extends JPanel {
     	
         this.model = model;
         
-        pt = new PanelTranslation(model.getCurrentPerspective());
-        pz = new PanelZoom(model.getCurrentPerspective());
+        pt = new PanelTranslation(model);
+        pz = new PanelZoom(model);
         GridLayout layout = new GridLayout(1,3);
         layout.setHgap(20);
         this.setLayout(layout);

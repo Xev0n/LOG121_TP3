@@ -1,6 +1,6 @@
 package gui;
 
-import model.Perspective;
+import model.ImageCustom;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -16,9 +16,9 @@ public class PanelTranslation extends JPanel {
 	private JButton btnDown;
 	private JButton btnLeft;
 	private JButton btnRight;
-	private Perspective model;
+	private ImageCustom model;
 
-	public PanelTranslation (Perspective model){
+	public PanelTranslation (ImageCustom model){
 		btnUp = new JButton(new ActionTranslate(model,"Up",new Point(0,-10)));
 		btnDown = new JButton(new ActionTranslate(model,"Down", new Point(0,10)));
 		btnLeft = new JButton(new ActionTranslate(model,"Left", new Point(-10,0)));

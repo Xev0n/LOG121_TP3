@@ -3,17 +3,17 @@ package actions;
 import java.awt.event.ActionEvent;
 
 import commandes.CommandZoomPlus;
-import model.Perspective;
+import model.ImageCustom;
 
 public class ActionZoomPlus extends AbstractActionOnImage{
 
-	public ActionZoomPlus(Perspective perspective, String name) {
-		super(perspective, name);
+	public ActionZoomPlus(ImageCustom imgCustom, String name) {
+		super(imgCustom, name);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.manager.doCommand(new CommandZoomPlus(this.perspective));
+		this.manager.doCommand(new CommandZoomPlus(imgCustom));
 	}
 
 }

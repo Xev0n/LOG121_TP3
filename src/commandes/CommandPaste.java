@@ -1,14 +1,11 @@
 package commandes;
 
-import java.awt.Image;
-
-import model.Perspective;
+import model.ImageCustom;
 
 public class CommandPaste extends AbstractCommand implements ICommandOnImage {
 
-	public CommandPaste(Perspective perspective) {
-		super(perspective);
-		// TODO Auto-generated constructor stub
+	public CommandPaste(ImageCustom imgCustom) {
+		super(imgCustom);
 	}
 
 	@Override

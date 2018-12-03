@@ -4,19 +4,19 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 
 import commandes.CommandTranslate;
-import model.Perspective;
+import model.ImageCustom;
 
 public class ActionTranslate extends AbstractActionOnImage {
 
 	private Point translation;
 	
-	public ActionTranslate(Perspective perspective, String name, Point translation) {
-		super(perspective, name);
+	public ActionTranslate(ImageCustom imgCustom, String name, Point translation) {
+		super(imgCustom, name);
 		this.translation = translation;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		this.manager.doCommand(new CommandTranslate(perspective, translation));
+		this.manager.doCommand(new CommandTranslate(imgCustom, translation));
 	}
 }

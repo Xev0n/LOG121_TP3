@@ -1,25 +1,27 @@
 package commandes;
 
-import java.awt.Image;
-
-import model.Perspective;
+import model.ImageCustom;
 
 public class CommandChangePerspective extends AbstractCommand implements ICommandOnImage {
 
-	public CommandChangePerspective(Perspective perspective) {
-		super(perspective);
-		// TODO Auto-generated constructor stub
+	private int index;
+	private int previousIndex;
+	
+	public CommandChangePerspective(ImageCustom imgCustom, int index) {
+		super(imgCustom);
+		this.index = index;
+		previousIndex = imgCustom.getCurrentPerspectiveIndex();
 	}
 
 	@Override
 	public void undo() {
-		// TODO Auto-generated method stub
-
+		imgCustom.changePerspective(previousIndex);
 	}
 
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
+		CommandManager.getInstance().resetUndoStack();
+		imgCustom.changePerspective(index);
 	}
 
 }

@@ -1,34 +1,29 @@
 package gui;
 
 import controller.PerspectiveImageController;
-import model.Perspective;
+import model.ImageCustom;
 
-import javax.swing.*;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
 import actions.ActionZoomMoins;
 import actions.ActionZoomPlus;
 
-import java.awt.*;
 
 public class PanelZoom extends JPanel {
+	
 	private JButton btnZoomUp;
 	private JButton btnZoomDown;
-	private Perspective model;
+	private ImageCustom model;
 
-
-	public PanelZoom(Perspective model){
-		btnZoomUp=new JButton(new ActionZoomPlus(model,"Zoom +"));
-		btnZoomDown=new JButton(new ActionZoomMoins(model, "Zoom -"));
-
-//		btnZoomUp.addActionListener(new PerspectiveImageController());
-//		btnZoomDown.addActionListener(new PerspectiveImageController());
+	public PanelZoom(ImageCustom model){
+		btnZoomUp = new JButton(new ActionZoomPlus(model,"Zoom +"));
+		btnZoomDown = new JButton(new ActionZoomMoins(model, "Zoom -"));
 		
 		this.setLayout(new GridLayout(1,3));
 		this.add(btnZoomUp);
 		this.add(btnZoomDown);
-
-
-
-
 	}
 }

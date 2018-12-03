@@ -40,6 +40,10 @@ public class CommandManager {
 		actionsDone.clear();
 	}
 	
+	public void resetUndoStack() {
+		actionsUndone.clear();
+	}
+	
 	public static CommandManager getInstance(){
 		if(manager == null)
 			manager = new CommandManager();
@@ -49,5 +53,6 @@ public class CommandManager {
 	public void doCommand(ICommandOnImage command) {
     	command.execute();
     	actionsDone.push(command);
+    	actionsUndone.clear();
 	}
 }

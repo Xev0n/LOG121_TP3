@@ -1,22 +1,20 @@
 package commandes;
 
-import java.awt.Image;
-
-import model.Perspective;
+import model.ImageCustom;
 
 public class CommandZoomPlus extends AbstractCommand implements ICommandOnImage {
 
-	public CommandZoomPlus(Perspective perspective) {
-		super(perspective);
+	public CommandZoomPlus(ImageCustom imgCustom) {
+		super(imgCustom);
 	}
 
 	@Override
 	public void undo() {
-		perspective.updateZoom(-ZOOM_INCREMENT);
+		imgCustom.getCurrentPerspective().updateZoom(-ZOOM_INCREMENT);
 	}
 
 	@Override
 	public void execute() {
-		perspective.updateZoom(ZOOM_INCREMENT);
+		imgCustom.getCurrentPerspective().updateZoom(ZOOM_INCREMENT);
 	}
 }

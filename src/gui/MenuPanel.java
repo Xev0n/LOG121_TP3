@@ -8,8 +8,12 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
+import commandes.CommandChangePerspective;
+import commandes.CommandManager;
+
 import java.awt.Image;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -101,10 +105,15 @@ public class MenuPanel extends JMenuBar {
 	private void ajouterMenuPerspectives() {
 		JMenu menuAide = new JMenu(MENU_PERSPECTIVES);
 		for(int i=0; i < model.getNbPerspectives(); i++) {
-			JMenuItem menuItem = new JMenuItem("Perspective " + i+1);
+			JMenuItem menuItem = new JMenuItem("Perspective " + (i+1));
 			menuAide.add(menuItem);
-			menuAide.addActionListener((ActionEvent e) -> {
-				//TODO: Changer les images
+			menuItem.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					String strIndex = menuItem.getText().split(" ")[1];
+					int index = Integer.parseInt(strIndex) - 1;
+					CommandManager.getInstance().doCommand(new CommandChangePerspective(model, index));
+				}
 			});
 		}
 

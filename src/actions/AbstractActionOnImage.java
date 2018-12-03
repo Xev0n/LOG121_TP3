@@ -3,15 +3,15 @@ package actions;
 import javax.swing.AbstractAction;
 
 import commandes.CommandManager;
-import model.Perspective;
+import model.ImageCustom;
 
 public abstract class AbstractActionOnImage extends AbstractAction{
 	
-	protected Perspective perspective;
+	protected ImageCustom imgCustom;
 	
-	public AbstractActionOnImage(Perspective perspective, String name) {
+	public AbstractActionOnImage(ImageCustom imgCustom, String name) {
 		super(name);
-		this.perspective = perspective;
+		this.imgCustom = imgCustom;
 	}
 	protected final static CommandManager manager = CommandManager.getInstance();
 }

@@ -31,9 +31,9 @@ public class PerspectiveImageController implements MouseListener, MouseWheelList
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		if(e.getWheelRotation() < 1) {
-			CommandManager.getInstance().doCommand(new CommandZoomPlus(model.getCurrentPerspective()));
+			CommandManager.getInstance().doCommand(new CommandZoomPlus(model));
 		} else {
-			CommandManager.getInstance().doCommand(new CommandZoomMoins(model.getCurrentPerspective()));
+			CommandManager.getInstance().doCommand(new CommandZoomMoins(model));
 		}
 	}
 
@@ -59,7 +59,7 @@ public class PerspectiveImageController implements MouseListener, MouseWheelList
 		int deltaX = e.getX() - initialMousePosition.x;
 		int deltaY = e.getY() - initialMousePosition.y;
 		
-		CommandManager.getInstance().doCommand(new CommandTranslate(model.getCurrentPerspective(), new Point(deltaX, deltaY)));
+		CommandManager.getInstance().doCommand(new CommandTranslate(model, new Point(deltaX, deltaY)));
 	}
 
 	@Override
