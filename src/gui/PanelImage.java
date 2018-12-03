@@ -34,6 +34,7 @@ public class PanelImage extends JPanel {
     public void paint(Graphics g) {
         super.paint(g);
         if(model.getImage() == null) {
+        	System.out.println("no image");
         	return;
         }
         

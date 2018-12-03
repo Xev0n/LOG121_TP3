@@ -13,7 +13,7 @@ public class PerspectiveImageView extends JFrame implements IObserver {
 	private ImageCustom model;
 	private MenuPanel mp;
 	private static final long serialVersionUID = 1L;
-	private static final String TITRE_FENETRE = "Devoir 2 - Log121";
+	private static final String TITRE_FENETRE = "Devoir 3 - Log121";
 	private static final Dimension DIMENSION = new Dimension(500, 500);
 
 	@Override
