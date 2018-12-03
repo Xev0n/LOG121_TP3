@@ -9,6 +9,10 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
+
+import actions.ActionLoad;
+import actions.ActionSave;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -32,7 +36,6 @@ public class MenuPanel extends JMenuBar {
 			ajouterMenuFichier();
 			ajouterMenuPerspectives();
 			ajouterMenuAide();
-
 		}
 
 		/**
@@ -74,45 +77,8 @@ public class MenuPanel extends JMenuBar {
 				System.exit(0);
 			});
 
-			menuChargerP.addActionListener((ActionEvent e) -> {
-
-				JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-				fileChooser.setDialogTitle("Selectionnez une sauvegarde");
-				fileChooser.setAcceptAllFileFilterUsed(false);
-				// Crï¿½er un filtre
-				FileNameExtensionFilter filtre = new FileNameExtensionFilter(".txt", "txt");
-				fileChooser.addChoosableFileFilter(filtre);
-
-				int returnValue = fileChooser.showOpenDialog(null);
-
-				if (returnValue == JFileChooser.APPROVE_OPTION) {
-
-					File selectedFile = fileChooser.getSelectedFile();
-
-					try {
-
-
-						FileInputStream f = new FileInputStream(selectedFile);
-						ObjectInputStream o = new ObjectInputStream(f);
-
-						Memento m= (Memento) o.readObject();
-						model.setImage(m.getImage());
-						model.setIndexCurrentPerspective(m.getIndexCurrentPerspective());
-						model.setTabPerspectives(m.getPerspectives());
-						model.update();
-
-						o.close();
-						f.close();
-					} catch (FileNotFoundException ex) {
-						System.out.println("File not found");
-					} catch (IOException ex) {
-						System.out.println(ex.getMessage());
-					} catch (ClassNotFoundException e1) {
-						e1.printStackTrace();
-					}
-				}
-
-			});
+			menuChargerP.addActionListener(new ActionLoad(model, "Charger"));
+			menuSauve.addActionListener(new ActionSave(model, "Sauvegarder"));
 
 			menuFichier.add(menuCharger);
 			menuFichier.add(menuQuitter);
@@ -120,7 +86,6 @@ public class MenuPanel extends JMenuBar {
 			menuFichier.add(menuChargerP);
 
 			add(menuFichier);
-
 		}
 
 		/**
@@ -133,10 +98,11 @@ public class MenuPanel extends JMenuBar {
 
 			menuPropos.addActionListener((ActionEvent e) -> {
 				JOptionPane.showMessageDialog(null,
-						"<html><p>Application simulant une chaine de production d'avions.</p>" + "<br>"
-								+ "<p>&copy; &nbsp; 2017 &nbsp; Ghizlane El Boussaidi</p>"
-								+ "<p>&copy; &nbsp; 2017 &nbsp; Dany Boisvert</p>"
-								+ "<p>&copy; &nbsp; 2017 &nbsp; Vincent Mattard</p>" + "<br>"
+						"<html><p>Application permettand la vue d'une image selon plusieurs perspectives.</p>" + "<br>"
+								+ "<p>&copy; &nbsp; 2018 &nbsp; Alec Durocher</p>"
+								+ "<p>&copy; &nbsp; 2018 &nbsp; Jérémy Grenier-Turcotte</p>"
+								+ "<p>&copy; &nbsp; 2018 &nbsp; Antonin Courtin</p>"
+								+ "<p>&copy; &nbsp; 2018 &nbsp; Philippe Nyamba</p>" + "<br>"
 								+ "<p>&Eacute;cole de technologie sup&eacute;rieure</p></html>");
 			});
 			add(menuAide);

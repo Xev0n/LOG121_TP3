@@ -38,6 +38,7 @@ public class CommandManager {
 	
 	public void reset(){
 		actionsDone.clear();
+		actionsUndone.clear();
 	}
 	
 	public void resetUndoStack() {

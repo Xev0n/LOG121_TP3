@@ -1,6 +1,7 @@
 package controller;
 
 import commandes.CommandManager;
+import commandes.CommandSave;
 import commandes.CommandTranslate;
 import commandes.CommandZoomMoins;
 import commandes.CommandZoomPlus;
@@ -73,23 +74,8 @@ public class PerspectiveImageController implements MouseListener, MouseWheelList
 		}
 		
 		if((e.getKeyCode() == KeyEvent.VK_S) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
-			try {
-				File file =new File("testSave.txt");
-				file.createNewFile();
-				FileOutputStream f = new FileOutputStream(file);
-				ObjectOutputStream o = new ObjectOutputStream(f);
-
-				Memento m= new Memento(model);
-				o.writeObject(m);
-
-				o.close();
-				f.close();
-			}catch (FileNotFoundException ex) {
-				System.out.println("File not found");
-			} catch (IOException ex) {
-				System.out.println(ex.getMessage());
-			}
-
+			CommandSave commande = new CommandSave(model);
+			commande.execute();
 		}
 	}
 
