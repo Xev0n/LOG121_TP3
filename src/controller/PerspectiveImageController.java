@@ -2,6 +2,8 @@ package controller;
 
 import java.awt.Cursor;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -11,7 +13,7 @@ import java.awt.event.MouseWheelListener;
 import commandes.*;
 import model.ImageCustom;
 
-public class PerspectiveImageController implements MouseListener, MouseWheelListener, MouseMotionListener{
+public class PerspectiveImageController implements MouseListener, MouseWheelListener, MouseMotionListener, KeyListener{
 	
 	private ImageCustom model;
 	private Point initialMousePosition;
@@ -59,4 +61,26 @@ public class PerspectiveImageController implements MouseListener, MouseWheelList
 		
 		CommandManager.getInstance().doCommand(new CommandTranslate(model.getCurrentPerspective(), new Point(deltaX, deltaY)));
 	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		
+		if((e.getKeyCode() == KeyEvent.VK_Z) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+			CommandManager.getInstance().undo();
+		}
+		
+		if((e.getKeyCode() == KeyEvent.VK_Y) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+			CommandManager.getInstance().redo();
+		}
+		
+		if((e.getKeyCode() == KeyEvent.VK_S) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+			//TODO: call command save
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) { }
+
+	@Override
+	public void keyTyped(KeyEvent e) { }
 }

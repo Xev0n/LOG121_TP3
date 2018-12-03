@@ -7,20 +7,37 @@ import model.Perspective;
 
 public class CommandManager {
 	
-	private Stack<ICommandOnImage> actions;
+	private Stack<ICommandOnImage> actionsDone;
+	private Stack<ICommandOnImage> actionsUndone;
+	
 	private LinkedList<Perspective> perspectives;
 	private static CommandManager manager;
 	
 	private CommandManager() {
-		actions = new Stack<>();
+		actionsDone = new Stack<>();
+		actionsUndone = new Stack<>();
 	}
 	
 	public void undo(){
-		// depile et call le undo de l'élement
+		if(actionsDone.isEmpty()) {
+			return;
+		}
+		ICommandOnImage commandOnImage = actionsDone.pop();
+		actionsUndone.push(commandOnImage);
+		commandOnImage.undo();
+	}
+	
+	public void redo() {
+		if(actionsUndone.isEmpty()) {
+			return;
+		}
+		ICommandOnImage commandOnImage = actionsUndone.pop();
+		actionsDone.push(commandOnImage);
+		commandOnImage.execute();
 	}
 	
 	public void reset(){
-		actions.clear();
+		actionsDone.clear();
 	}
 	
 	public static CommandManager getInstance(){
@@ -31,6 +48,6 @@ public class CommandManager {
 
 	public void doCommand(ICommandOnImage command) {
     	command.execute();
-    	actions.push(command);
+    	actionsDone.push(command);
 	}
 }

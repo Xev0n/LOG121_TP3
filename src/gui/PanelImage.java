@@ -7,7 +7,7 @@ import javax.swing.*;
 
 import controller.PerspectiveImageController;
 
-import java.awt.*;
+import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseWheelEvent;
@@ -23,9 +23,11 @@ public class PanelImage extends JPanel {
     public PanelImage(ImageCustom model){
         this.model = model;
         controller = new PerspectiveImageController(model);
+        setFocusable(true);
         addMouseWheelListener(controller);
         addMouseListener(controller);
         addMouseMotionListener(controller);
+        addKeyListener(controller);
     }
 
     @Override
