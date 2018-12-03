@@ -2,14 +2,9 @@ package gui;
 
 import model.ImageCustom;
 
-import java.awt.GridLayout;
-import java.awt.Image;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
-
-import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 public class PanelCommands extends JPanel {
 	
@@ -17,11 +12,12 @@ public class PanelCommands extends JPanel {
     private PanelZoom pz;
     private ImageCustom model;
     private JComboBox jc;
+    private JLabel imgLabel;
 
     public PanelCommands(ImageCustom model) {
     	
         this.model = model;
-        
+
         pt = new PanelTranslation(model);
         pz = new PanelZoom(model);
         GridLayout layout = new GridLayout(1,3);
@@ -34,12 +30,14 @@ public class PanelCommands extends JPanel {
         Image image = imageIcon.getImage(); // transform it
         Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         imageIcon = new ImageIcon(newimg);
-        JLabel imgLabel = new JLabel();
+        imgLabel = new JLabel();
         imgLabel.setIcon(imageIcon);
 
         this.add(pt);
         this.add(pz);
         this.add(imgLabel);
     }
+
+
 
 }

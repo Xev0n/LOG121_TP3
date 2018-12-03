@@ -1,12 +1,10 @@
 package gui;
 
 import model.ImageCustom;
-import model.Perspective;
 import observer.IObserver;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Observable;
 
 public class PerspectiveImageView extends JFrame implements IObserver {
 	
@@ -21,6 +19,7 @@ public class PerspectiveImageView extends JFrame implements IObserver {
 	@Override
 	public void update() {
 		System.out.println("Update");
+
 		repaint();
 	}
 

@@ -1,10 +1,11 @@
 package model;
 
-import java.awt.Point;
-
 import observer.AbstractObservable;
 
-public class Perspective extends AbstractObservable {
+import java.awt.*;
+import java.io.Serializable;
+
+public class Perspective extends AbstractObservable implements Serializable {
 	
 	/**
 	 * Enum that represents the different direction of a possible translation.

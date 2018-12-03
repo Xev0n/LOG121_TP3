@@ -1,17 +1,13 @@
 package gui;
 
+import commandes.CommandChangePerspective;
+import commandes.CommandManager;
 import model.ImageCustom;
-import model.Perspective;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
-
-import commandes.CommandChangePerspective;
-import commandes.CommandManager;
-
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -23,6 +19,7 @@ public class MenuPanel extends JMenuBar {
 		private static final long serialVersionUID = 1L;
 		private static final String MENU_FICHIER_TITRE = "Fichier";
 		private static final String MENU_FICHIER_CHARGER = "Charger";
+		private static final String MENU_FICHIER_SAUVEGARDE = "Sauvegarder";
 		private static final String MENU_FICHIER_QUITTER = "Quitter";
 		private static final String MENU_AIDE_TITRE = "Aide";
 		private static final String MENU_AIDE_PROPOS = "A propos de...";
@@ -43,6 +40,7 @@ public class MenuPanel extends JMenuBar {
 		private void ajouterMenuFichier() {
 			JMenu menuFichier = new JMenu(MENU_FICHIER_TITRE);
 			JMenuItem menuCharger = new JMenuItem(MENU_FICHIER_CHARGER);
+			JMenuItem menuSauve = new JMenuItem(MENU_FICHIER_SAUVEGARDE);
 			JMenuItem menuQuitter = new JMenuItem(MENU_FICHIER_QUITTER);
 
 			menuCharger.addActionListener((ActionEvent e) -> {
@@ -63,6 +61,7 @@ public class MenuPanel extends JMenuBar {
 						bfImg = ImageIO.read(selectedFile);
 						model.setImage(bfImg);
 						System.out.println("Image choisie : "+selectedFile.getAbsolutePath());
+						model.update();
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
@@ -75,6 +74,7 @@ public class MenuPanel extends JMenuBar {
 
 			menuFichier.add(menuCharger);
 			menuFichier.add(menuQuitter);
+			menuFichier.add(menuSauve);
 
 			add(menuFichier);
 
