@@ -11,6 +11,8 @@ public class Perspective extends AbstractObservable implements Serializable {
 	 * Enum that represents the different direction of a possible translation.
 	 * @author Alec
 	 */
+
+	//private static final long serialVersionUID = -1496543845304703683L;
 	public enum enuTranslationDirection {
 		HORIZONTAL, VERTICAL
 	}

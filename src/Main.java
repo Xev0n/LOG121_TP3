@@ -1,11 +1,9 @@
-import java.awt.image.BufferedImage;
-
-import javax.imageio.ImageIO;
-
-import java.io.IOException;
-
 import gui.PerspectiveImageView;
 import model.ImageCustom;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class Main {
 
@@ -19,6 +17,6 @@ public class Main {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-        //TODO: Run the app
+
     }
 }

@@ -3,6 +3,7 @@ package gui;
 import commandes.CommandChangePerspective;
 import commandes.CommandManager;
 import model.ImageCustom;
+import model.Memento;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -11,14 +12,14 @@ import javax.swing.filechooser.FileSystemView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 public class MenuPanel extends JMenuBar {
 
 		private static final long serialVersionUID = 1L;
 		private static final String MENU_FICHIER_TITRE = "Fichier";
-		private static final String MENU_FICHIER_CHARGER = "Charger";
+		private static final String MENU_FICHIER_CHARGER = "Charger image";
+	    private static final String MENU_FICHIER_CHARGER_P = "Charger image sauvegarde";
 		private static final String MENU_FICHIER_SAUVEGARDE = "Sauvegarder";
 		private static final String MENU_FICHIER_QUITTER = "Quitter";
 		private static final String MENU_AIDE_TITRE = "Aide";
@@ -42,6 +43,7 @@ public class MenuPanel extends JMenuBar {
 			JMenuItem menuCharger = new JMenuItem(MENU_FICHIER_CHARGER);
 			JMenuItem menuSauve = new JMenuItem(MENU_FICHIER_SAUVEGARDE);
 			JMenuItem menuQuitter = new JMenuItem(MENU_FICHIER_QUITTER);
+			JMenuItem menuChargerP = new JMenuItem(MENU_FICHIER_CHARGER_P);
 
 			menuCharger.addActionListener((ActionEvent e) -> {
 				JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
@@ -72,9 +74,50 @@ public class MenuPanel extends JMenuBar {
 				System.exit(0);
 			});
 
+			menuChargerP.addActionListener((ActionEvent e) -> {
+
+				JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+				fileChooser.setDialogTitle("Selectionnez une sauvegarde");
+				fileChooser.setAcceptAllFileFilterUsed(false);
+				// Cr�er un filtre
+				FileNameExtensionFilter filtre = new FileNameExtensionFilter(".txt", "txt");
+				fileChooser.addChoosableFileFilter(filtre);
+
+				int returnValue = fileChooser.showOpenDialog(null);
+
+				if (returnValue == JFileChooser.APPROVE_OPTION) {
+
+					File selectedFile = fileChooser.getSelectedFile();
+
+					try {
+
+
+						FileInputStream f = new FileInputStream(selectedFile);
+						ObjectInputStream o = new ObjectInputStream(f);
+
+						Memento m= (Memento) o.readObject();
+						model.setImage(m.getImage());
+						model.setIndexCurrentPerspective(m.getIndexCurrentPerspective());
+						model.setTabPerspectives(m.getPerspectives());
+						model.update();
+
+						o.close();
+						f.close();
+					} catch (FileNotFoundException ex) {
+						System.out.println("File not found");
+					} catch (IOException ex) {
+						System.out.println(ex.getMessage());
+					} catch (ClassNotFoundException e1) {
+						e1.printStackTrace();
+					}
+				}
+
+			});
+
 			menuFichier.add(menuCharger);
 			menuFichier.add(menuQuitter);
 			menuFichier.add(menuSauve);
+			menuFichier.add(menuChargerP);
 
 			add(menuFichier);
 

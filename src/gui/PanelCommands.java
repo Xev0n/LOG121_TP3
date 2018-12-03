@@ -1,12 +1,13 @@
 package gui;
 
 import model.ImageCustom;
+import observer.IObserver;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class PanelCommands extends JPanel {
+public class PanelCommands extends JPanel implements IObserver {
 	
     private PanelTranslation pt;
     private PanelZoom pz;
@@ -36,6 +37,13 @@ public class PanelCommands extends JPanel {
         this.add(pt);
         this.add(pz);
         this.add(imgLabel);
+    }
+
+    @Override
+    public void update() {
+        System.out.println("Update");
+
+        repaint();
     }
 
 

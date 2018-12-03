@@ -19,7 +19,7 @@ public class PerspectiveImageView extends JFrame implements IObserver {
 	@Override
 	public void update() {
 		System.out.println("Update");
-
+		pc.update();
 		repaint();
 	}
 

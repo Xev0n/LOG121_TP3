@@ -3,7 +3,7 @@ package observer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractObservable {
+public class AbstractObservable{
 	private List<IObserver> observers;
 	
 	public AbstractObservable() {

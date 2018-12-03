@@ -1,17 +1,15 @@
 package controller;
 
-import java.awt.Cursor;
-import java.awt.Point;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
-
-import commandes.*;
+import commandes.CommandManager;
+import commandes.CommandTranslate;
+import commandes.CommandZoomMoins;
+import commandes.CommandZoomPlus;
 import model.ImageCustom;
+import model.Memento;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
 
 public class PerspectiveImageController implements MouseListener, MouseWheelListener, MouseMotionListener, KeyListener{
 	
@@ -31,6 +29,7 @@ public class PerspectiveImageController implements MouseListener, MouseWheelList
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		if(e.getWheelRotation() < 1) {
+			System.out.println(model.getCurrentPerspective().getZoomLevel());
 			CommandManager.getInstance().doCommand(new CommandZoomPlus(model));
 		} else {
 			CommandManager.getInstance().doCommand(new CommandZoomMoins(model));
@@ -74,7 +73,23 @@ public class PerspectiveImageController implements MouseListener, MouseWheelList
 		}
 		
 		if((e.getKeyCode() == KeyEvent.VK_S) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
-			//TODO: call command save
+			try {
+				File file =new File("testSave.txt");
+				file.createNewFile();
+				FileOutputStream f = new FileOutputStream(file);
+				ObjectOutputStream o = new ObjectOutputStream(f);
+
+				Memento m= new Memento(model);
+				o.writeObject(m);
+
+				o.close();
+				f.close();
+			}catch (FileNotFoundException ex) {
+				System.out.println("File not found");
+			} catch (IOException ex) {
+				System.out.println(ex.getMessage());
+			}
+
 		}
 	}
 
