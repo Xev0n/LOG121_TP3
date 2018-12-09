@@ -43,7 +43,7 @@ public class Perspective extends AbstractObservable implements Serializable {
 	
 	/**
 	 * Construit la perspective
-	 * @param imageCustom image
+	 * @param imageCustom image 
 	 */
 	public Perspective(ImageCustom imageCustom) {
 		addObserver(imageCustom);
