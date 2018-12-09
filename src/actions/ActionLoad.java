@@ -5,6 +5,10 @@ import java.awt.event.ActionEvent;
 import commandes.CommandLoad;
 import model.ImageCustom;
 
+/**
+ * Classe permettant de charger une image sauvegardée avec ses paramètres
+ *
+ */
 public class ActionLoad extends AbstractActionOnImage {
 	
 	public ActionLoad(ImageCustom imgCustom, String name) {

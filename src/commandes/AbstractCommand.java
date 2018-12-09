@@ -2,6 +2,10 @@ package commandes;
 
 import model.ImageCustom;
 
+/**
+ * Classe abstraite qui contient l'attribut de l'image à manipuler par chacune des commandes
+ *
+ */
 public abstract class AbstractCommand {
 	
 	protected static ImageCustom imgCustom;

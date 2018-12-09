@@ -5,6 +5,10 @@ import java.awt.event.ActionEvent;
 import commandes.CommandZoomMoins;
 import model.ImageCustom;
 
+/**
+ * Classe permettant de dézoomer une image
+ *
+ */
 public class ActionZoomMoins extends AbstractActionOnImage{
 
 	public ActionZoomMoins(ImageCustom imageCustom, String name) {
