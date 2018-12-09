@@ -5,6 +5,10 @@ import java.awt.event.ActionEvent;
 import commandes.CommandSave;
 import model.ImageCustom;
 
+/**
+ * Classe permettant de sauvegarder une image
+ *
+ */
 public class ActionSave extends AbstractActionOnImage{
 	
 	private static final long serialVersionUID = 1L;

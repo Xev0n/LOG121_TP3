@@ -5,7 +5,10 @@ import java.awt.event.ActionEvent;
 
 import commandes.CommandTranslate;
 import model.ImageCustom;
-
+/**
+ * Classe permettant de faire une translation de d'une image
+ *
+ */
 public class ActionTranslate extends AbstractActionOnImage {
 
 	private Point translation;

@@ -5,6 +5,10 @@ import java.awt.event.ActionEvent;
 import commandes.CommandZoomPlus;
 import model.ImageCustom;
 
+/**
+ * Classe permettant de zoomer une image
+ *
+ */
 public class ActionZoomPlus extends AbstractActionOnImage{
 
 	public ActionZoomPlus(ImageCustom imgCustom, String name) {
