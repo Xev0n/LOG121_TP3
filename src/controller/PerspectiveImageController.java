@@ -1,16 +1,21 @@
 package controller;
 
+import java.awt.Cursor;
+import java.awt.Point;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
+
 import commandes.CommandManager;
 import commandes.CommandSave;
 import commandes.CommandTranslate;
 import commandes.CommandZoomMoins;
 import commandes.CommandZoomPlus;
 import model.ImageCustom;
-import model.Memento;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
 
 public class PerspectiveImageController implements MouseListener, MouseWheelListener, MouseMotionListener, KeyListener{
 	

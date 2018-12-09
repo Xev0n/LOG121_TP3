@@ -1,9 +1,6 @@
 package commandes;
 
-import java.awt.Image;
-
 import model.ImageCustom;
-import model.Perspective;
 
 public class CommandCopy extends AbstractCommand implements ICommandOnImage {
 

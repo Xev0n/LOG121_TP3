@@ -1,7 +1,6 @@
 package commandes;
 
 import model.ImageCustom;
-import model.Perspective;
 
 public abstract class AbstractCommand {
 	

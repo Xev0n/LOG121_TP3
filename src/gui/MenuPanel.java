@@ -1,22 +1,25 @@
 package gui;
 
-import commandes.CommandChangePerspective;
-import commandes.CommandManager;
-import model.ImageCustom;
-import model.Memento;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.JFileChooser;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
 import actions.ActionLoad;
 import actions.ActionSave;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.*;
+import commandes.CommandChangePerspective;
+import commandes.CommandManager;
+import model.ImageCustom;
 
 public class MenuPanel extends JMenuBar {
 

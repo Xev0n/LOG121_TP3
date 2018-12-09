@@ -10,7 +10,6 @@ public class CommandManager {
 	private Stack<ICommandOnImage> actionsDone;
 	private Stack<ICommandOnImage> actionsUndone;
 	
-	private LinkedList<Perspective> perspectives;
 	private static CommandManager manager;
 	
 	private CommandManager() {

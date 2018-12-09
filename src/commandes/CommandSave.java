@@ -1,6 +1,5 @@
 package commandes;
 
-import java.awt.TrayIcon.MessageType;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

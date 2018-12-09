@@ -1,8 +1,5 @@
 package gui;
 
-import controller.PerspectiveImageController;
-import model.ImageCustom;
-
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
@@ -10,6 +7,7 @@ import javax.swing.JPanel;
 
 import actions.ActionZoomMoins;
 import actions.ActionZoomPlus;
+import model.ImageCustom;
 
 
 public class PanelZoom extends JPanel {

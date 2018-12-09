@@ -11,14 +11,11 @@ public class PanelCommands extends JPanel implements IObserver {
 	
     private PanelTranslation pt;
     private PanelZoom pz;
-    private ImageCustom model;
     private JComboBox jc;
     private JLabel imgLabel;
 
     public PanelCommands(ImageCustom model) {
     	
-        this.model = model;
-
         pt = new PanelTranslation(model);
         pz = new PanelZoom(model);
         GridLayout layout = new GridLayout(1,3);

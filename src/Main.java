@@ -1,11 +1,10 @@
-import gui.PerspectiveImageView;
-import model.ImageCustom;
-import commandes.CommandLoad;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
+import gui.PerspectiveImageView;
+import model.ImageCustom;
 
 public class Main {
 

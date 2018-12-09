@@ -1,22 +1,16 @@
 package gui;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+import javax.swing.JPanel;
+
+import controller.PerspectiveImageController;
 import model.ImageCustom;
 import model.Perspective;
 
-import javax.swing.*;
-
-import controller.PerspectiveImageController;
-
-import java.awt.Graphics;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
-import java.awt.image.BufferedImage;
-
 public class PanelImage extends JPanel {
 	
-    private JLabel lab;
     private ImageCustom model;
     private PerspectiveImageController controller;
 
